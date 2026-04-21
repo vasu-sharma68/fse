@@ -1,0 +1,96 @@
+# name: My First Workflow
+# on: 
+#   push:
+#   schedule:
+#     - cron: '* /15 * * * *' 
+# jobs:
+#   say-hello:  #job name
+#     runs-on: ubuntu-latest  #os on which job will run
+
+#     steps:
+#       - name: Print message
+#         run: echo "Hello, Github Actions!"
+#       - name: Print name
+#         run: echo "Sanam"
+#   say-bye:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: print message
+#         run: echo "Good bye from second job"
+
+
+
+        #by default, jobs run in parallel
+        #jitne jobs utne vm
+        #agar ek job ko dusre job ka wait karna hai to usko dependancy set karni padegi
+
+        #jobs ko agar sequence main chala na hian too use karte hain needs
+        #needs ka use karke hum ek job ko dusre job par depend kar sakte hain
+
+
+
+
+# name : Sequence work flow
+# on: # This section defines the events that trigger the workflow
+#   push: # Trigger the workflow on push events
+#   schedule: # Trigger the workflow on a schedule
+#     - cron: '*/15 * * * *' # Run the workflow every 15 minutes
+# jobs: # Define the jobs that will run in the workflow
+#   job1: # Job 1
+#     runs-on: ubuntu-latest
+#     needs: job2  # This job depends on job1 
+#     steps:
+#       - name: Print message
+#         run: echo "Hello from job 1"
+#   job2: # Job 2
+#     runs-on: ubuntu-latest
+    
+#     steps:
+#       - name: Print message
+#         run: echo "Hello from job 2"
+  
+
+
+  #uses actions
+  #actions are reusable units of code that can be shared across workflows
+  #actions are reusable code provided by github that perform common tasks like clone a repo or setup node
+
+
+
+# name: Actions
+# on: push
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '14'
+
+
+#       - name: list files
+#         run: ls
+#       - name: check node version
+#         run: node -v  
+#       - name : check npm version
+#         run: npm -v
+
+name: Actions
+on: pull
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check
+        run: ls 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'   
+      - name: Download dependancy
+        run: npm i   
+      - name: run test
+        run: npm test
