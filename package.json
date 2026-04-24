@@ -1,0 +1,17 @@
+{
+  "name": "lecture18-ci-cd",
+  "version": "1.0.0",
+  "description": "CI/CD Pipeline with GitHub Actions",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "build": "echo 'Build complete'",
+    "test": "echo 'Tests passed'"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.5.0",
+    "react": "^18.0.0"
+  }
+}
